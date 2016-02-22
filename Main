@@ -52,6 +52,10 @@ public class Main extends JavaPlugin implements Listener {
 					
 					
 					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Cow") && sign.getLine(2).equalsIgnoreCase("$15000") && sign.getLine(3).equalsIgnoreCase("3")) {
+					
+					
+					
 				}
 				
 			}
