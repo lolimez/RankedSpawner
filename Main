@@ -48,11 +48,39 @@ public class Main extends JavaPlugin implements Listener {
 					
 					
 					
-				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Pig") && sign.getLine(2).equalsIgnoreCase("$10000") && sign.getLine(3).equalsIgnoreCase("2")) {
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Pig") && sign.getLine(2).equalsIgnoreCase("$15000") && sign.getLine(3).equalsIgnoreCase("2")) {
 					
 					
 					
-				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Cow") && sign.getLine(2).equalsIgnoreCase("$15000") && sign.getLine(3).equalsIgnoreCase("3")) {
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Cow") && sign.getLine(2).equalsIgnoreCase("$25000") && sign.getLine(3).equalsIgnoreCase("3")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Spider") && sign.getLine(2).equalsIgnoreCase("$40000") && sign.getLine(3).equalsIgnoreCase("4")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Zombie") && sign.getLine(2).equalsIgnoreCase("$60000") && sign.getLine(3).equalsIgnoreCase("5")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Skeleton") && sign.getLine(2).equalsIgnoreCase("$80000") && sign.getLine(3).equalsIgnoreCase("6")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Blaze") && sign.getLine(2).equalsIgnoreCase("$100000") && sign.getLine(3).equalsIgnoreCase("7")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Creeper") && sign.getLine(2).equalsIgnoreCase("$200000") && sign.getLine(3).equalsIgnoreCase("8")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Enderman") && sign.getLine(2).equalsIgnoreCase("$500000") && sign.getLine(3).equalsIgnoreCase("9")) {
+					
+					
+					
+				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Iron Golem") && sign.getLine(2).equalsIgnoreCase("$1000000") && sign.getLine(3).equalsIgnoreCase("10")) {
 					
 					
 					
