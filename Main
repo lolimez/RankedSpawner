@@ -13,18 +13,72 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
+
+    public static File folder;
+    public static File file;
+    public static FileConfiguration perms;
 	
 	@Override
 	public void onEnable() {
 		
 		Bukkit.getPluginManager().registerEvents(this, this);
+		
+        folder = getDataFolder();
+
+        file = new File(folder, "permissions.yml");
+
+        perms = new YamlConfiguration();
+
+        if (folder.exists() == false) {
+
+
+            try {
+
+                folder.mkdir();
+
+            } catch (Exception e) {
+
+
+            }
+
+        }
+
+        if (file.exists() == false) {
+
+            try {
+
+                file.createNewFile();
+
+            } catch (Exception e) {
+
+
+            }
+
+        }
+
+        try {
+
+            perms.load(file);
+
+        } catch (Exception e) {
+
+
+        }
 
 	}
 	
 	@Override
 	public void onDisable() {
 		
+		try {
 		
+			perms.saveFile(file);
+		
+		} catch (Exception e) {
+		
+		
+		
+		}
 		
 	}
 	
@@ -32,6 +86,25 @@ public class Main extends JavaPlugin implements Listener {
 		
 		return true;
 		
+	}
+	
+	@EventHandler
+	public void onPlayerJoin(PlayerJoinEvent e) {
+	
+	Player p = e.getPlayer();
+	
+	String uuid = p.getUniqueId().toString();
+	
+		if (p.hasPlayedBefore()) {
+		
+			perms.set("PlayerInfo." + uuid, p.getName());
+		
+		} else {
+		
+			perms.set("Level." + uuid, 0);
+		
+		}
+	
 	}
 
 	@EventHandler
