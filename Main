@@ -83,6 +83,63 @@ public class Main extends JavaPlugin implements Listener {
 	}
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	
+		Player p = (Player) sender;
+		String uuid = p.getUniqueId().toString();
+	
+		if (cmd.getName().equalsIgnoreCase("rankup")) {
+		
+			if (perms.getInt("Level." + uuid) == 1) {
+			
+				if (perms.getInt("Chicken." + uuid) == 1) {
+				
+					perms.set()
+				
+				} else {
+				
+				
+				
+				}
+			
+			} else if (perms.getInt("Level.") == 2) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 3) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 4) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 5) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 6) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 7) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 8) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 9) {
+			
+			
+			
+			} else if (perms.getInt("Level.") == 10) {
+			
+			
+			
+			}
+		
+		}
 		
 		return true;
 		
@@ -101,7 +158,17 @@ public class Main extends JavaPlugin implements Listener {
 		
 		} else {
 		
-			perms.set("Level." + uuid, 0);
+			perms.set("Level." + uuid, 1);
+			perms.set("Chicken." + uuid, 0);
+			perms.set("Pig." + uuid, 0);
+			perms.set("Cow." + uuid, 0);
+			perms.set("Spider." + uuid, 0);
+			perms.set("Zombie." + uuid, 0);
+			perms.set("Skeleton." + uuid, 0);
+			perms.set("Blaze." + uuid, 0);
+			perms.set("Creeper." + uuid, 0);
+			perms.set("Enderman." + uuid, 0);
+			perms.set("IronGolem." + uuid, 0);
 		
 		}
 	
@@ -119,43 +186,122 @@ public class Main extends JavaPlugin implements Listener {
 				
 				if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Chicken") && sign.getLine(2).equalsIgnoreCase("$5000") && sign.getLine(3).equalsIgnoreCase("1")) {
 					
+					if (perms.getInt("Level.") >= 1) {
+
+						ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+						ItemMeta spawnerMeta = spawner.getItemMeta();
+						spawnerMeta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Chicken Spawner");
+						spawner.setItemMeta(spawnerMeta);
 					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Pig") && sign.getLine(2).equalsIgnoreCase("$15000") && sign.getLine(3).equalsIgnoreCase("2")) {
 					
+					if (perms.getInt("Level." >= 2)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Cow") && sign.getLine(2).equalsIgnoreCase("$25000") && sign.getLine(3).equalsIgnoreCase("3")) {
 					
+					if (perms.getInt("Level." >= 3)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Spider") && sign.getLine(2).equalsIgnoreCase("$40000") && sign.getLine(3).equalsIgnoreCase("4")) {
 					
+					if (perms.getInt("Level." >= 4)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Zombie") && sign.getLine(2).equalsIgnoreCase("$60000") && sign.getLine(3).equalsIgnoreCase("5")) {
 					
+					if (perms.getInt("Level." >= 5)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Skeleton") && sign.getLine(2).equalsIgnoreCase("$80000") && sign.getLine(3).equalsIgnoreCase("6")) {
 					
+					if (perms.getInt("Level." >= 6)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Blaze") && sign.getLine(2).equalsIgnoreCase("$100000") && sign.getLine(3).equalsIgnoreCase("7")) {
 					
+					if (perms.getInt("Level." >= 7)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Creeper") && sign.getLine(2).equalsIgnoreCase("$200000") && sign.getLine(3).equalsIgnoreCase("8")) {
 					
+					if (perms.getInt("Level." >= 8)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Enderman") && sign.getLine(2).equalsIgnoreCase("$500000") && sign.getLine(3).equalsIgnoreCase("9")) {
 					
+					if (perms.getInt("Level." >= 9)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Iron Golem") && sign.getLine(2).equalsIgnoreCase("$1000000") && sign.getLine(3).equalsIgnoreCase("10")) {
 					
+					if (perms.getInt("Level." == 10)) {
 					
+					
+					
+					} else {
+					
+					
+					
+					}
 					
 				}
 				
