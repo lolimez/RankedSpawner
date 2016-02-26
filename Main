@@ -14,6 +14,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
 
+	public static Economy economy = null;
+
     public static File folder;
     public static File file;
     public static FileConfiguration perms;
@@ -64,6 +66,15 @@ public class Main extends JavaPlugin implements Listener {
 
 
         }
+        
+        if (!setupEconomy()) {
+        
+        	getLogger().severe(String.format("[%s] - No Vault dependency was found, plugin disabled."))
+        	getServer().getPluginManager().disablePlugin(this);
+        	
+        	return;
+        
+        }
 
 	}
 	
@@ -82,6 +93,27 @@ public class Main extends JavaPlugin implements Listener {
 		
 	}
 	
+	public boolean setupEconomy() {
+	
+		if (getServer().getPluginManager().getPlugin("Vault") == null) {
+		
+			return false;
+		
+		}
+		
+		RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+		
+		if (rsp == null) {
+		
+			return false;
+		
+		}
+		
+		economy = rsp.getProvider();
+		return rsp != null;
+	
+	}
+
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 	
 		Player p = (Player) sender;
@@ -92,50 +124,122 @@ public class Main extends JavaPlugin implements Listener {
 			if (perms.getInt("Level." + uuid) == 1) {
 			
 				if (perms.getInt("Chicken." + uuid) == 1) {
-				
-					perms.set()
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 2" + ChatColor.GRAY + "!");
 				
 				} else {
 				
-				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Chicken Spawner" + ChatColor.GRAY + " before you can do this!");
 				
 				}
 			
 			} else if (perms.getInt("Level.") == 2) {
 			
-			
+				if (perms.getInt("Pig." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 3" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Pig Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 3) {
 			
-			
+				if (perms.getInt("Cow." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 4" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Cow Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 4) {
 			
-			
+				if (perms.getInt("Spider." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 5" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Spider Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 5) {
 			
-			
+				if (perms.getInt("Zombie." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 6" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Zombie Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 6) {
-			
-			
+				
+				if (perms.getInt("Skeleton." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 7" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Skeleton Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 7) {
 			
-			
+				if (perms.getInt("Blaze." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 8" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Blaze Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 8) {
 			
-			
+				if (perms.getInt("Creeper." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 9" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Creeper Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 9) {
 			
-			
+				if (perms.getInt("Enderman." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 10" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "Enderman Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			} else if (perms.getInt("Level.") == 10) {
 			
-			
+				if (perms.getInt("IronGolem." + uuid) == 1) {
+
+					Bukkit.broadcastMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + p.getName() + " has ranked up to " + ChatColor.UNDERLINE + "Level 11" + ChatColor.GRAY + "!");
+				
+				} else {
+				
+					p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to purchase a " + ChatColor.UNDERILNE + "IronGolem Spawner" + ChatColor.GRAY + " before you can do this!");
+				
+				}
 			
 			}
 		
@@ -187,11 +291,35 @@ public class Main extends JavaPlugin implements Listener {
 				if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Chicken") && sign.getLine(2).equalsIgnoreCase("$5000") && sign.getLine(3).equalsIgnoreCase("1")) {
 					
 					if (perms.getInt("Level.") >= 1) {
+					
+						if (p.getInventory.firstEmpty() != -1) {
 
-						ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
-						ItemMeta spawnerMeta = spawner.getItemMeta();
-						spawnerMeta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Chicken Spawner");
-						spawner.setItemMeta(spawnerMeta);
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 5000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Chicken Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Chicken Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");)
+							
+							return;
+							
+						}
 					
 					}
 					
@@ -199,11 +327,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 2)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 15000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Pig Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Pig Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 2" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -211,11 +366,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 3)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 25000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Cow Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Cow Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 3" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -223,11 +405,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 4)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 40000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Spider Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Spider Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 4" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -235,11 +444,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 5)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 60000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Zombie Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Zombie Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 5" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -247,11 +483,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 6)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 80000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Skeleton Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Skeleton Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 6" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -259,11 +522,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 7)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 100000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Blaze Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Blaze Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 7" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -271,11 +561,38 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 8)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 200000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Creeper Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased a " + ChatColor.UNDERILNE + "Creeper Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 8" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -283,23 +600,77 @@ public class Main extends JavaPlugin implements Listener {
 					
 					if (perms.getInt("Level." >= 9)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 500000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Enderman Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased an " + ChatColor.UNDERILNE + "Enderman Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 9" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
 				} else if (sign.getLine(0).equalsIgnoreCase("RankedSpawner") && sign.getLine(1).equalsIgnoreCase("Iron Golem") && sign.getLine(2).equalsIgnoreCase("$1000000") && sign.getLine(3).equalsIgnoreCase("10")) {
 					
-					if (perms.getInt("Level." == 10)) {
+					if (perms.getInt("Level." >= 10)) {
 					
-					
+						if (p.getInventory.firstEmpty() != -1) {
+
+							EconomyResponse er = economy.withdrawPlayer(p.getName(), 1000000);
+							if (er.transactionSuccess()) {
+						
+								ItemStack spawner = new ItemStack(Material.MOB_SPAWNER);
+								ItemMeta spawnerMeta = spawner.getItemMeta();
+								spawnerMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + "IronGolem Spawner")
+								spawner.setItemMeta(spawnerMeta);
+								
+								p.getInventory().addItem(spawner);
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You have purchased an " + ChatColor.UNDERILNE + "IronGolem Spawner" + ChatColor.GRAY + "!");
+								
+								return;
+						
+							} else {
+							
+								p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You do not have the required funds to buy this!");
+							
+							}
+							
+						} else {
+						
+							p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "Your inventory is full!");
+							
+							return;
+							
+						}
 					
 					} else {
 					
-					
+						p.sendMessage(p.sendMessage(ChatColor.BLACK + "[" + ChatColor.DARK_PURPLE + "RankedSpawner" + ChatColor.BLACK + "] " + ChatColor.GRAY + "You need to be " + ChatColor.UNDERILNE + "Level 10" + ChatColor.GRAY + " to buy this spawner!");)
 					
 					}
 					
@@ -313,6 +684,73 @@ public class Main extends JavaPlugin implements Listener {
 			
 		}
 		
+	}
+	
+	@EventHandler
+	public void onBlockPlace(BlockPlaceEvent e) {
+	
+		Block block = e.getPlaceBlock();
+
+		if (block == new ItemStack(Material.MOB_SPAWNER)) {
+		
+			if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Chicken Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.CHICKEN);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Pig Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.PIG);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Cow Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.COW);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Spider Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.SPIDER);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Zombie Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.ZOMBIE);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Skeleton Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.SKELETON);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Blaze Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.BLAZE);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Creeper Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.CREEPER);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "Enderman Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.ENDERMAN);
+			
+			} else if (block.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GOLD + "" + ChatColor.BOLD + "IronGolem Spawner")) {
+			
+				CreatureSpawner cs = (CreatureSpawner) block.getState();
+				cs.setSpawnedType(EntityType.VILLAGERGOLEM);
+			
+			}
+		
+		} else {
+		
+			return;
+		
+		}
+	
 	}
 
 }
